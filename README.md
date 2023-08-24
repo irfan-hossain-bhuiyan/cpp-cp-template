@@ -13,7 +13,7 @@ int main()
     cout<<z;
    cout << "range(10).tuple_with(range(5)):";
    range(10).tuple_with<int>(range(5)).debug_print();
-   cout << "rangeproductiter([4,2]):";
+   cout << "rangeproductiter([4,5]):";
    range_product_iter<2>({4, 5}).debug_print();
    cout << " Vec<i32> x{1, 2, 3, 4, 5, 5, 6, 7};\ntupleiter(range(x.size()).collection_iter(x.data()),range(1, x.size()).collection_iter(x.data())).debug_print();";
    Vec<i32> x{1, 2, 3, 4, 5, 5, 6, 7};

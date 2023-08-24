@@ -400,6 +400,7 @@ template <typename T> ostream &operator<<(ostream &os, const Vec<T> v) {
     os << x << ",";
   }
   os << "]";
+  return os;
 }
 template <typename T> class input_iter : public Myiter<T> {
 public:
@@ -628,7 +629,7 @@ tupleiter<T, O...> Myiter<T>::tuple_with(Myiter<O> &&...other) {
 
 template <typename T> tupleiter<int, T> Myiter<T>::enumarate() {
   static auto inf_iter = infinite_iter();
-  return tupleiter<int, T>(std::move(inf_iter), move(*this));
+  return tupleiter<int, T>(std::move(inf_iter), std::move(*this));
 }
 
 // need a hell lots of optimization in here.
@@ -740,22 +741,13 @@ public:
   template <typename Compare> void sort(Compare comp) {
     std::sort(this->begin(), this->end(), comp);
   }
-//  map<T,int> iter() {
-//    return range(this->size()).collection_iter(this->data());
-//  }
-//
-//  map<T,int> iter(usize index) {
-//    return range(index, this->size()).collection_iter(this->data());
-//  }
-  //  template <size_t I> auto window_iter() {
-  //  array<map<T,usize>, I> iters;
-  //  for (usize i = 0; i < I; i++) {
-  //          auto a=iter(i);
-  //  }
-  //  return arrayiter(iters);
-  // }
-
-  // Print
+ // Print
+// auto iter(){
+//        return range(this->size()).collection_iter(this->data());
+// }
+// auto iter(usize fisrt_index){
+//        return range(fisrt_index,this->size()).collection_iter(this->data());
+// }
 };
 
 int factorial(int n) {
@@ -785,8 +777,7 @@ template <typename T = i64> T pow(T value, T exponent) {
   }
 }
 void do_nothing() { auto x = input_iter(get_input()).collect(); }
-int main(int argc, char *argv[]) {
-  fast_io();
+//  fast_io();
   //  auto xc = range(7);
   //  vector<i32> a{
   //      1, 2, 2, 3, 3, 32, 2, 2,
@@ -803,10 +794,10 @@ int main(int argc, char *argv[]) {
   // cout << "range(10).tuple_with(range(5)):";
   // range(10).tuple_with<int>(range(5)).debug_print();
   // cout << "rangeproductiter([4,2]):";
-  Vec<i32> x{1, 2, 3, 4, 5, 5, 6, 7};
-  tupleiter(range(x.size()).collection_iter(x.data()),
-            range(1, x.size()).collection_iter(x.data()))
-      .debug_print();
+//  Vec<i32> x{1, 2, 3, 4, 5, 5, 6, 7};
+//  tupleiter(range(x.size()).collection_iter(x.data()),
+//            range(1, x.size()).collection_iter(x.data()))
+//      .debug_print();
   
   //  range_product_iter<2>({4, 5}).debug_print();
 
@@ -831,7 +822,7 @@ int main(int argc, char *argv[]) {
   // end = chrono::high_resolution_clock::now();
   // cout << chrono::duration_cast<chrono::milliseconds>(end - begin).count() <<
   // " ans"<<sum<<"\n";
-}
+
 
 // Output:
 // range(10):[0,1,2,3,4,5,6,7,8,9,]
