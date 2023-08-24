@@ -742,12 +742,12 @@ public:
     std::sort(this->begin(), this->end(), comp);
   }
  // Print
-// auto iter(){
-//        return range(this->size()).collection_iter(this->data());
-// }
-// auto iter(usize fisrt_index){
-//        return range(fisrt_index,this->size()).collection_iter(this->data());
-// }
+ auto iter(){
+        return range(this->size()).collection_iter(this->data());
+ }
+ auto iter(usize fisrt_index){
+        return range(fisrt_index,this->size()).collection_iter(this->data());
+ }
 };
 
 int factorial(int n) {

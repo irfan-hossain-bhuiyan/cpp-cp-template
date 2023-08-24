@@ -14,6 +14,7 @@ int main()
    cout << " Vec<i32> x{1, 2, 3, 4, 5, 5, 6, 7};\ntupleiter(range(x.size()).collection_iter(x.data()),range(1, x.size()).collection_iter(x.data())).debug_print();";
    Vec<i32> x{1, 2, 3, 4, 5, 5, 6, 7};
    tupleiter(range(x.size()).collection_iter(x.data()),range(1, x.size()).collection_iter(x.data())).debug_print();
+
     cout << "range(20).enumarate:";
     range(20).enumarate().debug_print();
     cout << "for(auto x:range(20).rev()){cout<<x<<\" \";}\n";
